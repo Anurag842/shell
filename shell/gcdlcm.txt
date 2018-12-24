@@ -1,0 +1,56 @@
+gcd()
+{
+  a=$1
+  b=$2
+  while [ `expr $a % $b` -ne 0 ]
+  do
+	c=`expr $a % $b`
+	a=$b
+	b=$c
+  done
+  echo $b
+}
+
+gcd2()
+{
+  a=$1
+  b=$2
+  i=$a
+  while [ $i -ge 0 ]
+  do
+    if [ `expr $a % $i` -eq 0 -a `expr $b % $i` -eq 0 ]
+    then
+      g=$i
+      break
+    fi
+    i=`expr $i - 1`
+  done
+}
+
+lcm()
+{
+  a=$1
+  b=$2
+  i=$a
+  while :
+  do
+    if [ `expr $i % $a` -eq 0 -a `expr $i % $b` -eq 0 ]
+    then
+      l=$i
+      echo $l
+      break
+    fi
+    i=`expr $i + 1`
+  done
+}
+
+a=10
+b=12
+gcd2 $a $b
+p=`expr $a \* $b`
+lcm=`expr $p / $g`
+echo "GCD = $g"
+echo $lcm
+
+lcm $a $b
+echo $l

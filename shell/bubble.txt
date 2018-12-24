@@ -1,0 +1,26 @@
+read -p "Enter the range: " n
+echo "the array elements are:"
+for (( i=0;i<n;i++ ))
+do
+	read a[i]	
+done
+echo "the given elements are:"
+for (( i=0; i<n; i++ ))
+do
+	echo ${a[$i]}
+done
+for (( i=0;i<n-1;i++ ))
+do
+	for (( j=0;j<n-i-1;j++ ))	
+	do
+		if [ ${a[j]} -gt ${a[j+1]} ]
+		then
+		t=${a[j]}
+		a[j]=${a[j+1]} 
+		a[j+1]=$t
+		fi
+	done
+done
+echo "after sorting the elements are:"
+
+echo -e "${a[*]}\t"

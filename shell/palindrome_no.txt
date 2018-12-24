@@ -1,0 +1,16 @@
+echo "Enter any number:"
+read number
+sum=0 
+temp=$number
+while [ $number -gt 0 ]
+do
+re=`expr $number % 10`
+sum=`expr \( $sum \* 10 \) + $re`
+number=`expr $number / 10`
+done
+if [ $temp -eq $sum ]
+then
+echo "Palindrome"
+else
+echo "Not Palindrome"
+fi 

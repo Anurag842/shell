@@ -1,0 +1,30 @@
+read -p "Can I know your name: " name
+read -p "enter the date: " dob
+IFS="/"
+set $dob
+d=$1
+m=$2
+y=$3
+now=$(date "+%d/%m/%y")
+IFS="/"
+set $now
+dd=$1
+mm=$2
+yy=`expr $3 + 2000`
+date=`expr $dd - $d`
+mon=`expr $mm - $m`
+year=`expr $yy - $y`
+if [ $date -le 0 ]
+then 
+	date=`expr $date + 30`
+	mon=`expr $mon - 1`
+fi
+if [ $mon -le 0 ]
+then
+	mon=`expr $mon + 12`
+	year=`expr $year - 1`
+fi
+echo "hay $name you are $year years, $mon months, $date days old"
+				
+
+

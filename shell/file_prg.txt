@@ -1,0 +1,19 @@
+for i in $*
+do
+	if [ -d $i ]
+	then
+		echo "$i is a directory"
+		ls $i
+	fi
+	if [ -f $i ]
+	then
+		echo "$i is a file"
+		set `cat $i|wc`
+		a=$1
+		b=$2
+		c=$3
+		echo "Line no:$a
+word:$b
+charater:$c"
+	fi
+done

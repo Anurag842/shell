@@ -1,0 +1,51 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.Date;
+
+public class DatePicker extends JApplet implements Runnable{
+Thread t;
+String st="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+public void init(){
+
+t=new Thread(this);
+t.start();
+System.out.println(getParameter("a"));
+
+}
+
+
+public void paint(Graphics g)
+{
+super.paint(g);
+Date dt=new Date();
+char ch;
+ch=st.charAt(st.length()-1);
+st=st.substring(0,st.length()-1);
+st=ch+st;
+g.drawRect(getWidth()/2-100,getHeight()/2-50,200,100);
+g.drawOval(getWidth()/2-100,getHeight()/2-50,200,100);
+g.setFont(new Font("Arial",Font.BOLD,14));
+g.setColor(Color.red);
+g.drawString(st,100,100);
+g.drawString(dt.toString(),100,200);
+g.drawString(getCodeBase().toString(),100,300);
+g.drawString(getDocumentBase().toString(),100,350);
+
+}
+
+public void run(){ for(;;){
+repaint();
+try{Thread.sleep(200);}catch(InterruptedException e){}
+
+}
+}
+
+
+}//class
+
+/* <object  code=DatePicker  width=600  height=500>
+<param name="a" value="10">
+
+</object>
+*/

@@ -1,0 +1,30 @@
+read -p "Enter the no of lines: " n
+x=`expr \( $n + 1 \) / 2`
+for (( i=1; i <= $x; i++ ))
+do
+	for ((j=1; j <= `expr $x - $i`;j++))
+	do
+		echo -n '  '
+	done
+	for (( j=1; j<= `expr \( $i \* 2 \) - 1`; j++ ))
+	do
+		echo -n '* '
+	done
+		echo ''
+done
+#
+
+x=`expr $x - 1`
+for (( i=$x; i >= 1; i-- ))
+do
+	for (( j=0; j <=  `expr $x - $i`; j++))
+	do
+		echo -n '  '
+	done
+	for (( j=1; j<= `expr \( $i \* 2 \) - 1`; j++))
+	do
+		echo -n '* '
+	done
+	echo ''
+	done
+

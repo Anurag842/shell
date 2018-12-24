@@ -1,0 +1,18 @@
+fact()
+{
+    f=1
+    for((i=1;i<=$1;i++))
+    do
+      f=`expr $f \* $i`
+     done
+     echo $f
+}
+read -p "enter value of x and n:" x n
+sum=1
+for((i=2;i<=n;i++))
+do
+   fact_res=`fact $x`
+   power=`echo "$x ^ $i"|bc`
+   sum=`echo "scale=3; $sum + $power / $fact_res"|bc`
+done
+echo "result= $sum"

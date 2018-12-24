@@ -1,0 +1,54 @@
+clear
+fact(){
+	m=$1
+	f=1
+	for (( i=1;i<=$m;i++))
+	do
+		f=`expr $f \* $i`
+	done
+	echo $f
+}
+
+ncr(){
+	m=$1
+	r=$2
+	nr=`expr $m - $r`
+	#echo " test :$nr ">/dev/tty
+	
+	ni=`fact $m`
+	d1=`fact $nr`
+	d2=`fact $r`
+	
+	res1=`expr $d1 \* $d2`
+	#echo " test :$res1 ">/dev/tty
+	res=`expr $ni / $res1`
+	echo $res
+}
+
+pascal(){	
+	n=$1
+	for (( i=0 ; i<$n ; i++))
+	do
+	
+		r=`expr $n - $i`
+		for (( j=1;j<$r;j++))
+		do
+			echo  -n "  " 
+		done
+		
+		for ((k=0;k<=$i;k++))
+		do
+			val=`ncr $i $k`
+			echo -n "   $val"
+		done
+		echo " "
+		
+	done
+}
+
+#f=`ncr 6 5`
+#echo " $f"
+
+read -p "Enter the value of n = " n
+pascal $n
+		

@@ -1,0 +1,22 @@
+while [ 1 ]
+do
+echo "1.display content of a file"
+echo "2.List of users currently logged in"
+echo "3.present working directory"
+echo "4.today's date"
+echo "5.calender of any year"
+echo "6.processes of useers"
+read -p "enter choice:" ch
+case $ch in
+1)  read -p "enter filename: " f
+	cat $f;;
+2) who -a;;
+3) pwd 
+	ls -l;;
+4) date;;
+5) read -p "enter the year: " year
+	cal $year;;
+6) ps ;;
+*) echo "wrong choice";;
+esac
+done

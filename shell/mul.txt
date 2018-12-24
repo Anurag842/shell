@@ -1,0 +1,6 @@
+echo "Enter two number:"
+read a b
+c=`expr $a \* $b`
+echo "OUTPUT:"
+echo "$a * $b = $c"
+

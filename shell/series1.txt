@@ -1,0 +1,30 @@
+fac()
+{
+  n=$1
+  f=1
+  for (( i=1; i <= $n; i++ ))
+  do
+    f=`expr $f \* $i`
+  done
+  echo $f
+}
+
+echo -n "Enter the number of terms : "
+read n
+echo -n "Enter the value of x : "
+read x
+
+s=0
+n=`expr $n \* 2`
+
+for (( i=0; i<=$n; i=`expr $i + 2` ))
+do
+  fa=`fac $i`
+  echo "fac: $i $fa"
+  p=`echo "scale=5; $x ^ $i" | bc`
+  x=`echo "scale=5; $p / $fa" | bc`
+  s=`echo "scale=5; $s + $x" | bc`
+done
+
+echo $s
+

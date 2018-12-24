@@ -1,0 +1,15 @@
+clear
+pi=3.14
+read -p "enter radious" r
+for((i=0;i<=360;i=i+4))
+do
+	a=`echo "scale=3;$pi/180 * $i"|bc|awk '{ print cos($1)}'`
+	b=`echo "scale=3;$pi/180 * $i"|bc|awk '{ print sin($1)}'`
+	x=`echo "scale=3;$a * $r"|bc|awk '{ print int($1)}'`
+	y=`echo "scale=3;$b* $r"|bc|awk '{ print int($1)}'`
+	p=`expr $x + 40`
+	q=`expr 12 - $y`
+	tput cup $q $p
+	echo "*"
+done		
+
